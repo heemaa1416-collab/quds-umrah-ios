@@ -1,0 +1,7 @@
+import {t} from './language.js';
+import {SITE_ORIGIN} from '../../lib/android-release.mjs';
+let available=null;
+export function renderUpdate(value){if(value!==undefined)available=value;const root=document.getElementById('app-update');root.replaceChildren();if(!available){root.hidden=true;return;}let url;try{url=new URL(available.url);}catch{root.hidden=true;return;}if(url.origin!==SITE_ORIGIN||!/^\/downloads\/quds-umrah-[\d.]+\.apk$/.test(url.pathname)){root.hidden=true;return;}
+ let dismissed='';try{dismissed=sessionStorage.getItem('quds-update-dismissed')||'';}catch{}root.hidden=dismissed===String(available.versionCode);if(root.hidden)return;
+ const title=document.createElement('h2');title.textContent=t('تحديث جديد لتطبيق أندرويد');const body=document.createElement('p');body.textContent=t('يتوفر إصدار جديد من تطبيق رحلات القدس. حدّث التطبيق للحصول على آخر التحسينات.')+' ('+available.versionName+')';const link=document.createElement('a');link.textContent=t('تحديث التطبيق');link.className='primary';link.href=url.href;link.target='_blank';link.rel='noopener noreferrer';const help=document.createElement('p');help.textContent=t('ثبّت التحديث فوق النسخة الحالية دون حذف التطبيق للاحتفاظ بطلباتك.');const later=document.createElement('button');later.type='button';later.className='quiet';later.textContent=t('لاحقًا');later.addEventListener('click',()=>{try{sessionStorage.setItem('quds-update-dismissed',String(available.versionCode));}catch{}root.hidden=true;});root.append(title,body,link,help,later);
+}

@@ -1,0 +1,2 @@
+export const API_ORIGIN='https://quds-umrah-registration.workspace-321610.chatgpt.site';
+export async function api(path,options={}){const response=await fetch(API_ORIGIN+path,{...options,credentials:'omit',signal:AbortSignal.timeout(45000)});let data;try{data=await response.json();}catch{throw Error('تعذر الاتصال بخدمة التسجيل. أعد المحاولة بعد قليل.');}if(!response.ok)throw Error(data.error||'تعذر تنفيذ الطلب');return data;}

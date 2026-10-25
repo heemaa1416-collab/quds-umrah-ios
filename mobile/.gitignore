@@ -1,0 +1,17 @@
+node_modules/
+dist/
+android/.gradle/
+android/local.properties
+android/**/build/
+android/.idea/
+ios/App/Pods/
+ios/App/build/
+ios/App/DerivedData/
+*.keystore
+*.jks
+*.p12
+*.mobileprovision
+.env*
+
+android/.kotlin/
+android/captures/

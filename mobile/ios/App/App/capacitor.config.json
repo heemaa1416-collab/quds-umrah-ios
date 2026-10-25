@@ -1,0 +1,27 @@
+{
+	"appId": "com.quds.umrah",
+	"appName": "رحلات القدس",
+	"webDir": "dist",
+	"server": {
+		"androidScheme": "https",
+		"iosScheme": "capacitor",
+		"hostname": "localhost"
+	},
+	"ios": {
+		"backgroundColor": "#f6f5ef",
+		"contentInset": "automatic"
+	},
+	"android": {
+		"backgroundColor": "#f6f5ef",
+		"allowMixedContent": false
+	},
+	"plugins": {
+		"CapacitorHttp": {
+			"enabled": false
+		}
+	},
+	"packageClassList": [
+		"CAPBrowserPlugin",
+		"AppPlugin"
+	]
+}
